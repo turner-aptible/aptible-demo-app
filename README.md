@@ -4,7 +4,7 @@ This repo is meant to show you how to deploy a test application for Aptible to g
 
 ## Requirements
 
-- [Aptible Demo Account](https://aptible.com)
+- [Aptible Account](https://aptible.com)
 
 - [Aptible CLI Installed and Logged In](https://deploy-docs.aptible.com/docs/cli)
 
