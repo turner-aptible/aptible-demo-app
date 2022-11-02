@@ -19,7 +19,7 @@ This repo is meant to show you how to deploy a test application for Aptible to g
 2. `cd` into this repo.
 
 ```console
-cd ~/deploy-demo-app-tf
+cd ~/aptible-demo-app
 ```
 
 3. Initialize Terraform within the directory.
