@@ -47,3 +47,9 @@ terraform apply
 ```
 
 7. Copy the app endpoint address in the terminal and see the app website deployed.
+
+    > _*NOTE:*_  If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
+    
+    > ```shell
+    > ssh-keygen -t rsa -b 4096 -C "you@example.com"
+    > ```

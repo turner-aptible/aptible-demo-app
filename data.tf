@@ -1,5 +1,5 @@
-### APTIBLE ENVIRONMENT ###
+### APTIBLE STACK ###
 
-data "aptible_environment" "demo_env" {
-  handle = var.aptible_environment
+data "aptible_stack" "demo_env" {
+  name = var.aptible_stack
 }

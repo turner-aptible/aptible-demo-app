@@ -5,10 +5,19 @@ locals {
   current_day       = formatdate("YYYY-MM-DD", local.current_timestamp)
 }
 
+### DEMO ENV ###
+
+resource "aptible_environment" "demo_env" {
+  handle   = "demo_app"
+  stack_id = data.aptible_stack.demo_env.stack_id
+  # Uncomment the next line if you'd like to specify the org_id
+  org_id = var.org_id
+}
+
 ### DEMO APP ###
 
 resource "aptible_app" "demo_app" {
-  env_id = data.aptible_environment.demo_env.env_id
+  env_id = aptible_environment.demo_env.env_id
   handle = "demo_app_${local.current_day}"
   config = {
     "APTIBLE_DOCKER_IMAGE" = "quay.io/aptible/deploy-demo-app"
@@ -37,7 +46,7 @@ resource "aptible_app" "demo_app" {
 ### DEMO ENDPOINT ###
 
 resource "aptible_endpoint" "demo_endpoint" {
-  env_id         = data.aptible_environment.demo_env.env_id
+  env_id         = aptible_environment.demo_env.env_id
   process_type   = "web"
   resource_id    = aptible_app.demo_app.app_id
   default_domain = true
@@ -51,7 +60,7 @@ resource "aptible_endpoint" "demo_endpoint" {
 ### APTIBLE DATABASES ###
 
 resource "aptible_database" "example_redis" {
-  env_id         = data.aptible_environment.demo_env.env_id
+  env_id         = aptible_environment.demo_env.env_id
   handle         = "example_redis_${local.current_day}"
   database_type  = "redis"
   container_size = 512
@@ -59,7 +68,7 @@ resource "aptible_database" "example_redis" {
 }
 
 resource "aptible_database" "example_postgres" {
-  env_id         = data.aptible_environment.demo_env.env_id
+  env_id         = aptible_environment.demo_env.env_id
   handle         = "example_postgres_${local.current_day}"
   database_type  = "postgresql"
   container_size = 512
